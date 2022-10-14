@@ -1,0 +1,40 @@
+name: task_manager
+description: Test task for UBRAINIANS
+
+publish_to: 'none'
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.2 <3.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  cupertino_icons: ^1.0.2
+  get_it: ^7.2.0
+  equatable: ^2.0.5
+  beamer: ^1.5.3
+  logger: ^1.1.0
+  flutter_bloc: ^8.1.1
+  injectable_generator: ^1.5.4
+  injectable: ^1.5.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^2.0.0
+  build_runner: ^2.3.0
+
+
+flutter:
+
+
+  uses-material-design: true
+
