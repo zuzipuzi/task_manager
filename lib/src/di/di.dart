@@ -3,15 +3,15 @@ import 'package:injectable/injectable.dart';
 
 import 'di.config.dart';
 
-GetIt getIt = GetIt.instance;
-
 @InjectableInit(
   initializerName: r'$initGetIt',
   preferRelativeImports: false,
   asExtension: false,
 )
-Future<void> configureDependencies() async {
-  $initGetIt(getIt);
+Future<GetIt> configureDependencies() async {
+  final dependencyContainer = GetIt.asNewInstance();
+
+  return $initGetIt(dependencyContainer);
 }
 
 class Environments {

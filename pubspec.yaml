@@ -23,6 +23,9 @@ dependencies:
   flutter_bloc: ^8.1.1
   injectable_generator: ^1.5.4
   injectable: ^1.5.3
+  shared_preferences: ^2.0.15
+  table_calendar: ^3.0.7
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:

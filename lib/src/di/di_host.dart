@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:provider/provider.dart';
 import 'di.dart';
 
-class DIHost extends StatefulWidget {
+class DIHost extends StatelessWidget {
   const DIHost({
     required this.child,
     Key? key,
@@ -9,30 +11,22 @@ class DIHost extends StatefulWidget {
 
   final Widget child;
 
-  @override
-  State<DIHost> createState() => _DIHostState();
-}
-
-class _DIHostState extends State<DIHost> {
-  late final Future configureDependenciesFuture;
-
-  @override
-  void initState() {
-    super.initState();
-
-    configureDependenciesFuture = configureDependencies();
+  static GetIt of(BuildContext context) {
+    return Provider.of<GetIt>(context, listen: false);
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: configureDependenciesFuture,
+      future: configureDependencies(),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return widget.child;
-        } else {
-          return Container();
-        }
+        return snapshot.hasData
+            ? Provider(
+                lazy: false,
+                create: (_) => snapshot.data as GetIt,
+                child: child,
+              )
+            : const Center(child: CircularProgressIndicator());
       },
     );
   }
